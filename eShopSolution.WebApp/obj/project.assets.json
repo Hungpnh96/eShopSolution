@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\HungPNH\\.nuget\\packages\\": {}
+    "C:\\Users\\hungp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Solution\\eShopSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
+      "projectUniqueName": "C:\\Hungpnh\\eSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
       "projectName": "eShopSolution.WebApp",
-      "projectPath": "D:\\Solution\\eShopSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
-      "packagesPath": "C:\\Users\\HungPNH\\.nuget\\packages\\",
-      "outputPath": "D:\\Solution\\eShopSolution\\eShopSolution.WebApp\\obj\\",
+      "projectPath": "C:\\Hungpnh\\eSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
+      "packagesPath": "C:\\Users\\hungp\\.nuget\\packages\\",
+      "outputPath": "C:\\Hungpnh\\eSolution\\eShopSolution.WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HungPNH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hungp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -55,12 +55,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.22, 3.1.22]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -69,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }
