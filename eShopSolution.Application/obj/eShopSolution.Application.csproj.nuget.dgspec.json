@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Hungpnh\\eSolution\\eShopSolution.Application\\eShopSolution.Application.csproj": {}
+    "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Application\\eShopSolution.Application.csproj": {}
   },
   "projects": {
-    "C:\\Hungpnh\\eSolution\\eShopSolution.Application\\eShopSolution.Application.csproj": {
+    "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Application\\eShopSolution.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Hungpnh\\eSolution\\eShopSolution.Application\\eShopSolution.Application.csproj",
+        "projectUniqueName": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Application\\eShopSolution.Application.csproj",
         "projectName": "eShopSolution.Application",
-        "projectPath": "C:\\Hungpnh\\eSolution\\eShopSolution.Application\\eShopSolution.Application.csproj",
-        "packagesPath": "C:\\Users\\hungp\\.nuget\\packages\\",
-        "outputPath": "C:\\Hungpnh\\eSolution\\eShopSolution.Application\\obj\\",
+        "projectPath": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Application\\eShopSolution.Application.csproj",
+        "packagesPath": "C:\\Users\\HungPNH\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hungp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HungPNH\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

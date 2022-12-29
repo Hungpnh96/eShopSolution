@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Hungpnh\\eSolution\\eShopSolution.Data\\eShopSolution.Data.csproj": {}
+    "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Data\\eShopSolution.Data.csproj": {}
   },
   "projects": {
-    "C:\\Hungpnh\\eSolution\\eShopSolution.Data\\eShopSolution.Data.csproj": {
+    "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Data\\eShopSolution.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Hungpnh\\eSolution\\eShopSolution.Data\\eShopSolution.Data.csproj",
+        "projectUniqueName": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Data\\eShopSolution.Data.csproj",
         "projectName": "eShopSolution.Data",
-        "projectPath": "C:\\Hungpnh\\eSolution\\eShopSolution.Data\\eShopSolution.Data.csproj",
-        "packagesPath": "C:\\Users\\hungp\\.nuget\\packages\\",
-        "outputPath": "C:\\Hungpnh\\eSolution\\eShopSolution.Data\\obj\\",
+        "projectPath": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Data\\eShopSolution.Data.csproj",
+        "packagesPath": "C:\\Users\\HungPNH\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hungp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HungPNH\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -80,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

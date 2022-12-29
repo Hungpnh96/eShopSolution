@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Yw+qSwPRcbAvOAAnyJgBEfU7NwAR+ED6wQlmfVWOzgm7q6hbTb+teIEcY2AqJZ4lDOMtXdc4ZuQLKeMryZjHjA==",
+  "dgSpecHash": "v5YknB9nt4qDeRj3lSJgZ0mRBxtFzsiBHGcC0fQJ0Gr2Oz0dlqloulCxQ8T96/CtATILZAwUj8u8vlC/N/G1Yw==",
   "success": true,
-  "projectFilePath": "C:\\Hungpnh\\eSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HungPNH\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
+  ],
   "logs": []
 }
