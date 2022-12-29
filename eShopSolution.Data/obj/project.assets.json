@@ -5282,11 +5282,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Data\\eShopSolution.Data.csproj",
+      "projectUniqueName": "D:\\Solution\\eShopSolution.Data\\eShopSolution.Data.csproj",
       "projectName": "eShopSolution.Data",
-      "projectPath": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Data\\eShopSolution.Data.csproj",
+      "projectPath": "D:\\Solution\\eShopSolution.Data\\eShopSolution.Data.csproj",
       "packagesPath": "C:\\Users\\HungPNH\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.Data\\obj\\",
+      "outputPath": "D:\\Solution\\eShopSolution.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HungPNH\\AppData\\Roaming\\NuGet\\NuGet.Config",

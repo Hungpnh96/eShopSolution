@@ -119,6 +119,5 @@ namespace eShopSolution.Data.Extensions
                 UserId = adminId
             });
         }
-
     }
 }

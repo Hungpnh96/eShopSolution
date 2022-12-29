@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj": {}
+    "D:\\Solution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj": {
+    "D:\\Solution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
+        "projectUniqueName": "D:\\Solution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
         "projectName": "eShopSolution.WebApp",
-        "projectPath": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
+        "projectPath": "D:\\Solution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
         "packagesPath": "C:\\Users\\HungPNH\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HungPNH\\Documents\\eShopSolution\\eShopSolution.WebApp\\obj\\",
+        "outputPath": "D:\\Solution\\eShopSolution.WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HungPNH\\AppData\\Roaming\\NuGet\\NuGet.Config",
