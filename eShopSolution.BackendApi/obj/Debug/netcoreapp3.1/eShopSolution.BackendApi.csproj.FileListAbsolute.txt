@@ -74,3 +74,9 @@ D:\Solution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.Backe
 D:\Solution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.dll
 D:\Solution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.pdb
 D:\Solution\eShopSolution.BackendApi\obj\Debug\netcoreapp3.1\eShopSolution.BackendApi.genruntimeconfig.cache
+D:\Solution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Abstractions.dll
+D:\Solution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Solution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Solution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Solution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Solution\eShopSolution.BackendApi\bin\Debug\netcoreapp3.1\System.Text.Json.dll
