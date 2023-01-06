@@ -1,10 +1,13 @@
 ﻿using eShopSolution.Data.Entities;
+using eShopSolution.ViewModels.Common;
 using eShopSolution.ViewModels.System.Users;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +44,8 @@ namespace eShopSolution.Application.System.Users
             {
                 new Claim(ClaimTypes.Email , user.Email),
                 new Claim(ClaimTypes.GivenName ,user.FirstName ),
-                new Claim(ClaimTypes.Role , string.Join(";",role))
+                new Claim(ClaimTypes.Role , string.Join(";",role)),
+                new Claim(ClaimTypes.Name , user.UserName)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
@@ -58,6 +62,7 @@ namespace eShopSolution.Application.System.Users
 
         public async Task<bool> Register(RegisterRequest request)
         {
+
             var user = new AppUser()
             {
                 Dob = request.Dob,
@@ -74,6 +79,40 @@ namespace eShopSolution.Application.System.Users
             }
             else
                 return false;
+        }
+
+        public async Task<PagedResult<UserVm>> GetUserPagging(GetUserPaggingRequest request)
+        {
+            var query = _userManager.Users;
+
+            if (!string.IsNullOrEmpty(request.KeyWord))
+            {
+                query = query.Where(x => x.UserName.Contains(request.KeyWord) ||
+                    x.PhoneNumber.Contains(request.KeyWord) ||
+                    x.Email.Contains(request.KeyWord)
+                );
+            }
+            //Count
+            int totalRow = await query.CountAsync();
+
+            var data = await query.Skip((request.PageIndex - 1) * request.PageSize).Take(request.PageSize)
+                .Select(x => new UserVm()
+                {
+                    Email = x.Email,
+                    PhoneNumber = x.PhoneNumber,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    UserName = x.UserName,
+                    Id = x.Id
+                }).ToListAsync();
+
+            var pagedResult = new PagedResult<UserVm>()
+            {
+                TotalRecord = totalRow,
+                Items = data
+            };
+
+            return pagedResult;
         }
     }
 }
