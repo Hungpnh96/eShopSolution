@@ -1,6 +1,7 @@
 ﻿using eShopSolution.Application.System.Users;
 using eShopSolution.ViewModels.System.Users;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ namespace eShopSolution.BackendApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -29,7 +31,7 @@ namespace eShopSolution.BackendApi.Controllers
                 return BadRequest("UserName or Password is incorret.");
             }
 
-            return Ok(new { token = resultToken });
+            return Ok(resultToken);
         }
 
         [HttpPost("register")]
@@ -47,5 +49,14 @@ namespace eShopSolution.BackendApi.Controllers
 
             return Ok();
         }
+
+        //https://localhost:5001/api/Users/pagging?PageIndex=1&PageSize=1
+        [HttpGet("pagging")]
+        public async Task<IActionResult> GetAllPagging([FromQuery] GetUserPaggingRequest reuqest)
+        {
+            var result  = await _userService.GetUserPagging(reuqest);
+            return Ok(result); // view statuscode in restfull API
+        }
+
     }
 }
