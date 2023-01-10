@@ -6,9 +6,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <title>Đăng nhập</title>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
     <meta charset="utf-8" />
     <meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
     <meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
@@ -19,23 +20,30 @@
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Keenthemes | Metronic" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+    <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="../../../assets/media/logos/favicon.ico" />
-    <!--begin::Fonts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <!--end::Fonts-->
-    <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="../../../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="../../../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    <!--end::Global Stylesheets Bundle-->
+
+    <style>
+        .field-icon {
+            float: right;
+            margin-left: -25px;
+            margin-top: -25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            padding-top: 50px;
+            margin: auto;
+        }
+    </style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
-<body style="background-color:#ceecf5 !important">
-    <!--Begin::Google Tag Manager (noscript) -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <!--End::Google Tag Manager (noscript) -->
+<body>
     <!--begin::Main-->
     <!--begin::Root-->
     <div class="d-flex flex-column flex-root">
@@ -51,7 +59,7 @@
                 <!--begin::Wrapper-->
                 <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
                     <!--begin::Form-->
-                    <form class="form w-100" novalidate="novalidate" asp-controller="Login" asp-action="Index" >
+                    <form class="form w-100" novalidate="novalidate" asp-controller="Login" asp-action="Index">
                         <!--begin::Heading-->
                         <div class="text-center mb-10">
                             <!--begin::Title-->
@@ -60,7 +68,7 @@
                             <!--begin::Link-->
                             <div class="text-gray-400 fw-bold fs-4">
                                 New Here?
-                                <a href="sign-up.html" class="link-primary fw-bolder">Create an Account</a>
+                                <a asp-action="Register" asp-controller="User" class="link-primary fw-bolder">Create an Account</a>
                             </div>
                             <!--end::Link-->
                         </div>
@@ -85,24 +93,25 @@
                             </div>
                             <!--end::Wrapper-->
                             <!--begin::Input-->
-                            <input class="form-control form-control-lg form-control-solid" type="password" asp-for="Password" name="password" autocomplete="off" placeholder="Password" />
+                            <input class="form-control form-control-lg form-control-solid" id="password" type="password" asp-for="Password" name="password" autocomplete="off" placeholder="Password" />
+                            <i class="fa fa-fw fa-eye field-icon" id="togglePassword"></i>
                             <!--end::Input-->
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
-                        <div class="fv-row mb-10">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-stack mb-2">
-                                <!--begin::Label-->
-                                <label class="form-label fw-bolder text-dark fs-6 mb-0">Remember me?</label>
-                                <input type="checkbox" asp-for="RememberMe" name="password" />
-                                <!--end::Label-->
-                            </div>
-                            <!--begin::Link-->
-                            <a href="#" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
-                            <!--end::Link-->
-                            <!--end::Wrapper-->
-                        </div>
+                        <!--<div class="fv-row mb-10">-->
+                        <!--begin::Wrapper-->
+                        <!--<div class="d-flex flex-stack mb-2">-->
+                        <!--begin::Label-->
+                        <!--<label class="form-label fw-bolder text-dark fs-6 mb-0">Remember me?</label>
+                        <input type="checkbox" asp-for="RememberMe" name="password" />-->
+                        <!--end::Label-->
+                        <!--</div>-->
+                        <!--begin::Link-->
+                        <!--<a href="#" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>-->
+                        <!--end::Link-->
+                        <!--end::Wrapper-->
+                        <!--</div>-->
                         <!--end::Input group-->
                         <!--begin::Actions-->
                         <div class="text-center">
@@ -139,6 +148,28 @@
         </div>
         <!--end::Authentication - Sign-in-->
     </div>
+
+    <script>
+        const togglePassword = document
+            .querySelector('#togglePassword');
+
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', () => {
+
+            // Toggle the type attribute using
+            // getAttribure() method
+            const type = password
+                .getAttribute('type') === 'password' ?
+                'text' : 'password';
+
+            password.setAttribute('type', type);
+
+            // Toggle the eye and bi-eye icon
+            //this.classList.toggle('fa-eye fa-eye-slash');
+        });
+
+    </script>
     <!--end::Root-->
     <!--end::Main-->
     <!--begin::Javascript-->
@@ -151,6 +182,7 @@
     <script src="../../../assets/js/custom/authentication/sign-in/general.js"></script>
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
+
 </body>
 <!--end::Body-->
 <!-- Mirrored from preview.keenthemes.com/metronic8/demo1/authentication/layouts/basic/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Dec 2021 05:00:13 GMT -->
