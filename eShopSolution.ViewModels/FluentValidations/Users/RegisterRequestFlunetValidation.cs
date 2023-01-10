@@ -30,13 +30,10 @@ namespace eShopSolution.ViewModels.FluentValidations.Users
                 }
             });
 
-            RuleFor(x => x.FirstName)
+            RuleFor(x => x.FullName)
                 .NotEmpty()
-                .WithMessage("FirstName không được trống!");
+                .WithMessage("FullName không được trống!");
 
-            RuleFor(x => x.LastName)
-                .NotEmpty()
-                .WithMessage("LastName không được trống!");
 
             RuleFor(x => x.Email)
                 .NotEmpty()

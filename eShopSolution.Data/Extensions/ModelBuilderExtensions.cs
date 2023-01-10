@@ -108,8 +108,7 @@ namespace eShopSolution.Data.Extensions
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Jupenhju@12"),
                 SecurityStamp = string.Empty,
-                FirstName = "Hung",
-                LastName = "Pham",
+                FullName = "Hung",
                 Dob = new DateTime(1995, 12, 17)
             });
 

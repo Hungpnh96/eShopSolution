@@ -21,26 +21,24 @@ namespace eShopSolution.AdminApp.Controllers
     {
         private readonly IUserApiClient _userApiClient;
         private readonly IConfiguration _configuration;
-        public UserController (IUserApiClient userApiClient , IConfiguration configuration )
+
+        public UserController(IUserApiClient userApiClient, IConfiguration configuration)
         {
             _userApiClient = userApiClient;
             _configuration = configuration;
         }
-        public async Task<IActionResult> Index(string keyword, int pageIndex =1, int pageSize=10)
+
+        public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageSize = 1)
         {
-            var session = HttpContext.Session.GetString("Token");
             var request = new GetUserPaggingRequest()
             {
-                BearerToken = session,
                 KeyWord = keyword,
                 PageIndex = pageIndex,
                 PageSize = pageSize
             };
-            var data =await _userApiClient.GetUserPaggings(request);
-            return View(data);
+            var data = await _userApiClient.GetUsersPagings(request);
+            return View(data.ResultObject);
         }
-
-       
 
         [HttpGet]
         public IActionResult Register()
@@ -49,41 +47,66 @@ namespace eShopSolution.AdminApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register( RegisterRequest request)
+        public async Task<IActionResult> Register(RegisterRequest request)
         {
             if (!ModelState.IsValid)
                 return View();
 
             var result = await _userApiClient.RegisterUser(request);
-            //Nếu đúng return phân trang
-            if (result)
+            if (result.IsSuccessed)
                 return RedirectToAction("Index");
 
+            ModelState.AddModelError("", result.Message);
             return View(request);
         }
 
-        //[HttpPost]
-        //public JsonResult Register(RegisterRequest register)
-        //{
-        //    //Thông báo 
-        //    string message = "";
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var result = await _userApiClient.GetById(id);
+            if (result.IsSuccessed)
+            {
+                var user = result.ResultObject;
+                var updateRequest = new UserUpdateRequest()
+                {
+                    Dob = user.Dob,
+                    Email = user.Email,
+                    FullName = user.FullName,
+                    PhoneNumber = user.PhoneNumber,
+                    Id = id
+                };
+                return View(updateRequest);
+            }
+            return RedirectToAction("Error", "Home");
+        }
 
-        //    //Nếu không bypass
-        //    if (!ModelState.IsValid)
-        //        return Json(ModelState.Values, new Newtonsoft.Json.JsonSerializerSettings());
+        [HttpPost]
+        public async Task<IActionResult> Edit(UserUpdateRequest request)
+        {
+            if (!ModelState.IsValid)
+                return View();
 
+            var result = await _userApiClient.UpdateUser(request.Id, request);
+            if (result.IsSuccessed)
+                return RedirectToAction("Index");
 
-
-        //    return Json(message, new Newtonsoft.Json.JsonSerializerSettings());
-        //}
+            ModelState.AddModelError("", result.Message);
+            return View(request);
+        }
 
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Remove("Token");
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Index", "Login");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var result = await _userApiClient.GetById(id);
+            return View(result.ResultObject);
+        }
     }
 }

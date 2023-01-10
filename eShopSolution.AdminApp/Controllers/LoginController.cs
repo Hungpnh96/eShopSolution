@@ -21,7 +21,9 @@ namespace eShopSolution.AdminApp.Controllers
     {
         private readonly IUserApiClient _userApiClient;
         private readonly IConfiguration _configuration;
-        public LoginController(IUserApiClient userApiClient, IConfiguration configuration)
+
+        public LoginController(IUserApiClient userApiClient,
+            IConfiguration configuration)
         {
             _userApiClient = userApiClient;
             _configuration = configuration;
@@ -30,7 +32,6 @@ namespace eShopSolution.AdminApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            //logout
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return View();
         }
@@ -41,19 +42,15 @@ namespace eShopSolution.AdminApp.Controllers
             if (!ModelState.IsValid)
                 return View(ModelState);
 
-            //Get token from API
-            var token = await _userApiClient.Authenticate(request);
+            var result = await _userApiClient.Authenticate(request);
 
-            var userPrincipal = this.ValidateToken(token);
-
+            var userPrincipal = this.ValidateToken(result.ResultObject);
             var authProperties = new AuthenticationProperties
             {
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                IsPersistent = false // Nếu true sẽ duy trì đăng nhập
+                IsPersistent = false
             };
-
-            HttpContext.Session.SetString("Token", token);
-
+            HttpContext.Session.SetString("Token", result.ResultObject);
             await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,

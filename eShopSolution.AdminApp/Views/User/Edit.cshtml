@@ -1,21 +1,9 @@
-﻿@model eShopSolution.ViewModels.System.Users.RegisterRequest
+﻿@model eShopSolution.ViewModels.System.Users.UserUpdateRequest
 
 @{
-    ViewData["Title"] = "Register User";
+    ViewData["Title"] = "Update User";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .field-icon {
-        float: right;
-        position: relative;
-        z-index: 2;
-    }
-
-    .container {
-        padding-top: 50px;
-        margin: auto;
-    }
-</style>
 
 <!--begin::Modal - Add task-->
 <div class="post d-flex flex-column-fluid">
@@ -26,14 +14,14 @@
             <!--begin::Modal header-->
             <div class="modal-header">
                 <!--begin::Modal title-->
-                <h2 class="fw-bolder">Register User</h2>
+                <h2 class="fw-bolder">Update User</h2>
                 <!--end::Modal title-->
             </div>
             <!--end::Modal header-->
             <!--begin::Modal body-->
             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                 <!--begin::Form-->
-                <form class="form" asp-action="Register">
+                <form class="form" asp-action="Edit" asp-controller="User">
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <!--begin::Scroll-->
                     <div class="d-flex flex-column scroll-y me-n7 pe-7">
@@ -58,24 +46,6 @@
                             <input type="number" asp-for="PhoneNumber" class="form-control form-control-solid w-500px ps-14" placeholder="0123456789" />
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
-                        <div class="fv-row mb-7">
-                            <label asp-for="UserName" class="required fw-bold fs-6 mb-2">User Name</label>
-                            <input type="text" asp-for="UserName" class="form-control form-control-solid w-500px ps-14" placeholder="UserName" />
-                            <span asp-validation-for="UserName" class="text-danger"></span>
-                        </div>
-                        <div class="fv-row mb-7">
-                            <label asp-for="Password" class="required fw-bold fs-6 mb-2">Password</label>
-                            <p>
-                                <input type="password" asp-for="Password" id="password" class="form-control form-control-solid w-500px ps-14" />
-                                <i class="fa fa-fw fa-eye field-icon" id="togglePassword"></i>
-                            </p>
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="fv-row mb-7">
-                            <label asp-for="ComfirmPassword" class="required fw-bold fs-6 mb-2">ComfirmPassword</label>
-                            <input type="password" asp-for="ComfirmPassword" class="form-control form-control-solid w-500px ps-14" />
-                            <span asp-validation-for="ComfirmPassword" class="text-danger"></span>
-                        </div>
                         <!--end::Input group-->
                     </div>
                     <!--end::Scroll-->
@@ -83,7 +53,7 @@
                     <div class="text-center pt-15">
                         @*<button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Discard</button>*@
                         <button type="submit" class="btn btn-primary">
-                            <span class="indicator-label">Create</span>
+                            <span class="indicator-label">Update</span>
                         </button>
                     </div>
                     <!--end::Actions-->
@@ -97,22 +67,3 @@
     <!--end::Modal dialog-->
 </div>
 <!--end::Modal - Add task-->
-<script>
-        const togglePassword = document
-            .querySelector('#togglePassword');
-
-        const password = document.querySelector('#password');
-
-        togglePassword.addEventListener('click', () => {
-
-            // Toggle the type attribute using
-            // getAttribure() method
-            const type = password
-                .getAttribute('type') === 'password' ?
-                'text' : 'password';
-
-            password.setAttribute('type', type);
-
-        });
-
-</script>
