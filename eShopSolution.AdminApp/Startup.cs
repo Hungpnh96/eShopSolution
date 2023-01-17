@@ -43,6 +43,7 @@ namespace eShopSolution.AdminApp
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IUserApiClient, UserApiClient>();
+            services.AddTransient<IRoleApiClient, RoleApiClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

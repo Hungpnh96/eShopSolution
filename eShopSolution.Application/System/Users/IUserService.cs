@@ -18,5 +18,7 @@ namespace eShopSolution.Application.System.Users
         Task<ApiResult<PagedResult<UserVm>>> GetUsersPaging(GetUserPaggingRequest request);
 
         Task<ApiResult<UserVm>> GetById(Guid id);
+        Task<ApiResult<bool>> Delete(Guid id);
+        Task<ApiResult<bool>> RoleAssign(Guid id , RoleAssignRequest request);
     }
 }
