@@ -1,0 +1,51 @@
+﻿@model eShopSolution.ViewModels.System.Users.RoleAssignRequest
+
+@{
+    ViewData["Title"] = "RoleAssign";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="post d-flex flex-column-fluid">
+    <div class="container-xxl">
+        <div class="card mb-5 mb-xl-10">
+            <form asp-action="RoleAssign">
+                <div class="card-body py-4">
+                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+                        <thead>
+                            <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                                <th class="w-10px pe-2">
+                                    <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                        <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
+                                    </div>
+                                </th>
+                                <th class="min-w-125px">Role</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-600 fw-bold">
+
+                            @for (var i = 0; i < Model.Roles.Count; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                            <input class="form-check-input" type="checkbox" asp-for="Roles[i].Selected" />
+                                            <input type="hidden" asp-for="Roles[i].Id" />
+                                            <input type="hidden" asp-for="Roles[i].Name" />
+                                        </div>
+                                    </td>
+                                    <td>  @Model.Roles[i].Name</td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                    <div class="d-flex align-items-center">
+                        <button type="submit" class="btn btn-primary me-5">Add Role</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card mb-5 mb-xl-10">
+        </div>
+    </div>
+</div>

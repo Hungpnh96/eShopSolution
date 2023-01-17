@@ -39,24 +39,36 @@ namespace eShopSolution.AdminApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(LoginRequest request)
         {
+            //Check validate 
             if (!ModelState.IsValid)
-                return View(ModelState);
+                return View();
 
+            //Call function Get authen
             var result = await _userApiClient.Authenticate(request);
-
-            var userPrincipal = this.ValidateToken(result.ResultObject);
-            var authProperties = new AuthenticationProperties
+            //Thành công
+            if (result.IsSuccessed)
             {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                IsPersistent = false
-            };
-            HttpContext.Session.SetString("Token", result.ResultObject);
-            await HttpContext.SignInAsync(
-                        CookieAuthenticationDefaults.AuthenticationScheme,
-                        userPrincipal,
-                        authProperties);
-
-            return RedirectToAction("Index", "Home");
+                //lấy token 
+                var userPrincipal = this.ValidateToken(result.ResultObject);
+                var authProperties = new AuthenticationProperties
+                {
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                    IsPersistent = false
+                };
+                HttpContext.Session.SetString("Token", result.ResultObject);
+                await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            userPrincipal,
+                            authProperties);
+                //redirect về trang home admin
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                //gán lỗi và show lên giao diện login
+                ModelState.AddModelError("", result.Message);
+                return View(request);
+            }
         }
 
         private ClaimsPrincipal ValidateToken(string jwtToken)

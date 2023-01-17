@@ -35,12 +35,12 @@ namespace eShopSolution.Application.System.Users
         public async Task<ApiResult<string>> Authencate(LoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
-            if (user == null) return null;
+            if (user == null) return new ApiErrorResult<string>("Tài khoản không tồn tại trên hệ thống.");
 
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
             if (!result.Succeeded)
             {
-                return new ApiErrorResult<string>("Đăng nhập không đúng");
+                return new ApiErrorResult<string>("Đăng nhập không đúng.");
             }
             var roles = await _userManager.GetRolesAsync(user);
             var claims = new[]
@@ -69,6 +69,7 @@ namespace eShopSolution.Application.System.Users
             {
                 return new ApiErrorResult<UserVm>("User không tồn tại");
             }
+            var roles = await _userManager.GetRolesAsync(user);
             var userVm = new UserVm()
             {
                 Email = user.Email,
@@ -76,7 +77,8 @@ namespace eShopSolution.Application.System.Users
                 FullName = user.FullName,
                 Dob = user.Dob,
                 Id = user.Id,
-                UserName = user.UserName
+                UserName = user.UserName,
+                Roles = roles
             };
             return new ApiSuccessResult<UserVm>(userVm);
         }
@@ -161,6 +163,46 @@ namespace eShopSolution.Application.System.Users
                 return new ApiSuccessResult<bool>();
             }
             return new ApiErrorResult<bool>("Cập nhật không thành công");
+        }
+
+        public async Task<ApiResult<bool>> Delete(Guid id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("User không tồn tại");
+            }
+            var result = await _userManager.DeleteAsync(user);
+            if(result.Succeeded)
+                return new ApiSuccessResult<bool>();
+            return new ApiErrorResult<bool>("Xóa User thất bại.");
+        }
+
+        public async Task<ApiResult<bool>> RoleAssign(Guid id, RoleAssignRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("Tài khoản đã tồn tại");
+            }
+            //lấy danh sách role cần xóa
+            var removedRoles = request.Roles.Where(x => x.Selected == false).Select(x=>x.Name).ToList();
+            //xóa các role theo danh sách đã lấy
+            foreach (var roleName in removedRoles)
+            {
+                if (await _userManager.IsInRoleAsync(user, roleName) == true)
+                    await _userManager.RemoveFromRoleAsync(user, roleName);
+            }
+            //lấy danh sách role cần thêm vào
+            var addRole = request.Roles.Where(x => x.Selected).Select(x => x.Name).ToList();
+            //thêm các role chưa tồn tại theo danh sách đã lấy
+            foreach(var roleName in addRole)
+            {
+                if( await _userManager.IsInRoleAsync(user , roleName) == false)
+                    await _userManager.AddToRoleAsync(user, roleName);
+            }
+
+            return new ApiSuccessResult<bool>();
         }
     }
 }
