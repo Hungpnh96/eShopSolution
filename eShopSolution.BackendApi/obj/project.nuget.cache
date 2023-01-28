@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dOvyipMMHt6moPilMKv83yrVDHidIAuZyalQfRo0cN5Z35cm95aXkVC9rfL9/PT7GTV3nmWHuznGjZl/I6kWbQ==",
+  "dgSpecHash": "9xFlyuLKggiX069Dh+GpZgVwgMsSv+I3NVB2SwFvHFHOmR+TxCU9f+qcuhl3spioyniz4KvfSZSwjfKYRzN+KA==",
   "success": true,
   "projectFilePath": "D:\\Solution\\eShopSolution.BackendApi\\eShopSolution.BackendApi.csproj",
   "expectedPackageFiles": [
@@ -125,8 +125,7 @@
     "C:\\Users\\HungPNH\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\HungPNH\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\HungPNH\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\HungPNH\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\HungPNH\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
+    "C:\\Users\\HungPNH\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

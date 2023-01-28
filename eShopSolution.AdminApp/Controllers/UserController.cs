@@ -185,7 +185,7 @@ namespace eShopSolution.AdminApp.Controllers
             var roleObj = await _roleApiClient.GetAll();
             var roleAssignRequest = new RoleAssignRequest();
 
-            foreach (var role in roleObj.ResultObject)
+            foreach (var role in roleObj)
             {
                 roleAssignRequest.Roles.Add(new SelectItem()
                 {
