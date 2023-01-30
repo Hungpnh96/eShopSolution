@@ -4,6 +4,19 @@
     ViewData["Title"] = "Create New Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Script{
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector('#txt_Details'), {
+
+        }).then(editor => {
+            window.editor = editor;
+        }).catch(err => {
+            console.error(err.stack);
+        });
+
+    </script>
+}
 
 <style>
     .field-icon {
@@ -20,7 +33,7 @@
 
 <div class="post d-flex flex-column-fluid">
     <div class="container-xxl">
-        <div class="card">
+        <div class="card" style="width:50% !important">
             <div class="modal-header">
                 <h2 class="fw-bolder">Create New Product</h2>
             </div>
@@ -30,52 +43,52 @@
                     <div class="d-flex flex-column scroll-y me-n7 pe-7">
                         <div class="fv-row mb-7">
                             <label asp-for="Name" class="required fw-bold fs-6 mb-2">Name</label>
-                            <input type="text" asp-for="Name" class="form-control form-control-solid w-500px ps-14" placeholder="name" />
+                            <input type="text" asp-for="Name" class="form-control form-control-solid " placeholder="name" />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="Price" class="required fw-bold fs-6 mb-2">Price</label>
-                            <input type="number" asp-for="Price" class="form-control form-control-solid w-500px ps-14" />
+                            <input type="number" asp-for="Price" class="form-control form-control-solid " />
                             <span asp-validation-for="Price" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="OriginalPrice" class="required fw-bold fs-6 mb-2">OriginalPrice</label>
-                            <input type="number" asp-for="OriginalPrice" class="form-control form-control-solid w-500px ps-14"/>
+                            <input type="number" asp-for="OriginalPrice" class="form-control form-control-solid "/>
                             <span asp-validation-for="OriginalPrice" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="Stock" class="required fw-bold fs-6 mb-2">Stock</label>
-                            <input type="number" asp-for="Stock" class="form-control form-control-solid w-500px ps-14"/>
+                            <input type="number" asp-for="Stock" class="form-control form-control-solid "/>
                             <span asp-validation-for="Stock" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="Description" class="required fw-bold fs-6 mb-2">Description</label>
-                            <textarea type="text" asp-for="Description" class="form-control form-control-solid w-500px ps-14" placeholder="Description"></textarea>
+                            <textarea type="text" asp-for="Description" class="form-control form-control-solid "></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                          <div class="fv-row mb-7">
                             <label asp-for="Details" class="required fw-bold fs-6 mb-2">Details</label>
-                             <textarea type="text" asp-for="Details" class="form-control form-control-solid w-500px ps-14" placeholder="Details"></textarea>
+                             <textarea type="text" id="txt_Details" asp-for="Details" class="form-control form-control-solid "></textarea>
                             <span asp-validation-for="Details" class="text-danger"></span>
                         </div>
                          <div class="fv-row mb-7">
                             <label asp-for="SeoDescription" class="required fw-bold fs-6 mb-2">SeoDescription</label>
-                            <input type="text" asp-for="SeoDescription" class="form-control form-control-solid w-500px ps-14" placeholder="SeoDescription" />
+                            <input type="text" asp-for="SeoDescription" class="form-control form-control-solid " placeholder="SeoDescription" />
                             <span asp-validation-for="SeoDescription" class="text-danger"></span>
                         </div>
                          <div class="fv-row mb-7">
                             <label asp-for="SeoTitle" class="required fw-bold fs-6 mb-2">SeoTitle</label>
-                            <input type="text" asp-for="SeoTitle" class="form-control form-control-solid w-500px ps-14" placeholder="SeoTitle" />
+                            <input type="text" asp-for="SeoTitle" class="form-control form-control-solid " placeholder="SeoTitle" />
                             <span asp-validation-for="SeoTitle" class="text-danger"></span>
                         </div>
                          <div class="fv-row mb-7">
                             <label asp-for="SeoAlias" class="required fw-bold fs-6 mb-2">SeoAlias</label>
-                            <input type="text" asp-for="SeoAlias" class="form-control form-control-solid w-500px ps-14" placeholder="SeoAlias" />
+                            <input type="text" asp-for="SeoAlias" class="form-control form-control-solid " placeholder="SeoAlias" />
                             <span asp-validation-for="SeoAlias" class="text-danger"></span>
                         </div>
                          <div class="fv-row mb-7">
                             <label asp-for="ThumbnailImage" class="required fw-bold fs-6 mb-2">File</label>
-                            <input type="file" asp-for="ThumbnailImage" class="form-control form-control-solid w-500px ps-14" />
+                            <input type="file" asp-for="ThumbnailImage" class="form-control form-control-solid " />
                             <span asp-validation-for="ThumbnailImage" class="text-danger"></span>
                         </div>
                     </div>

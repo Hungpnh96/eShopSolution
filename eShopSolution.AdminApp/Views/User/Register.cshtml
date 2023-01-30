@@ -23,7 +23,7 @@
     <!--begin::Modal dialog-->
     <div class="container-xxl">
         <!--begin::Modal content-->
-        <div class="card">
+        <div class="card" style="width:50% !important;">
             <!--begin::Modal header-->
             <div class="modal-header">
                 <!--begin::Modal title-->
@@ -41,40 +41,40 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-7">
                             <label asp-for="FullName" class="required fw-bold fs-6 mb-2">Full Name</label>
-                            <input type="text" asp-for="FullName" class="form-control form-control-solid w-500px ps-14" placeholder="Full name" />
+                            <input type="text" asp-for="FullName" class="form-control form-control-solid " placeholder="Full name" />
                             <span asp-validation-for="FullName" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="Dob" class="required fw-bold fs-6 mb-2">Date of birth</label>
-                            <input type="date" asp-for="Dob" class="form-control form-control-solid w-500px ps-14" />
+                            <input type="date" asp-for="Dob" class="form-control form-control-solid " />
                             <span asp-validation-for="Dob" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="Email" class="required fw-bold fs-6 mb-2">Email</label>
-                            <input type="email" asp-for="Email" class="form-control form-control-solid w-500px ps-14" placeholder="abc@gmail.com" />
+                            <input type="email" asp-for="Email" class="form-control form-control-solid " placeholder="abc@gmail.com" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="PhoneNumber" class="required fw-bold fs-6 mb-2">Phone Number</label>
-                            <input type="number" asp-for="PhoneNumber" class="form-control form-control-solid w-500px ps-14" placeholder="0123456789" />
+                            <input type="number" asp-for="PhoneNumber" class="form-control form-control-solid " placeholder="0123456789" />
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="UserName" class="required fw-bold fs-6 mb-2">User Name</label>
-                            <input type="text" asp-for="UserName" class="form-control form-control-solid w-500px ps-14" placeholder="UserName" />
+                            <input type="text" asp-for="UserName" class="form-control form-control-solid " placeholder="UserName" />
                             <span asp-validation-for="UserName" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="Password" class="required fw-bold fs-6 mb-2">Password</label>
                             <p>
-                                <input type="password" asp-for="Password" id="password" class="form-control form-control-solid w-500px ps-14" />
+                                <input type="password" asp-for="Password" id="password" class="form-control form-control-solid " />
                                 <i class="fa fa-fw fa-eye field-icon" id="togglePassword"></i>
                             </p>
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         <div class="fv-row mb-7">
                             <label asp-for="ComfirmPassword" class="required fw-bold fs-6 mb-2">ComfirmPassword</label>
-                            <input type="password" asp-for="ComfirmPassword" class="form-control form-control-solid w-500px ps-14" />
+                            <input type="password" asp-for="ComfirmPassword" class="form-control form-control-solid " />
                             <span asp-validation-for="ComfirmPassword" class="text-danger"></span>
                         </div>
                         <!--end::Input group-->
