@@ -19,8 +19,8 @@ namespace eShopSolution.Data.Extensions
                );
 
             modelBuilder.Entity<Language>().HasData(
-                new Language() { Id = "vi-VN", Name = "Tiếng Việt", IsDefault = true },
-                new Language() { Id = "en-US", Name = "English", IsDefault = false });
+                new Language() { Id = "vi", Name = "Tiếng Việt", IsDefault = true },
+                new Language() { Id = "en", Name = "English", IsDefault = false });
 
             modelBuilder.Entity<Category>().HasData(
                 new Category()
@@ -41,10 +41,10 @@ namespace eShopSolution.Data.Extensions
                  });
 
             modelBuilder.Entity<CategoryTranslation>().HasData(
-                  new CategoryTranslation() { Id = 1, CategoryId = 1, Name = "Sản phẩm 1", LanguageId = "vi-VN", SeoAlias = "San-pham-1", SeoDescription = "Sản phẩm 1", SeoTitle = "Sản phẩm 1" },
-                  new CategoryTranslation() { Id = 2, CategoryId = 1, Name = "Product Name 1", LanguageId = "en-US", SeoAlias = "Product-name-1", SeoDescription = "The products name 1", SeoTitle = "The products name 1" },
-                  new CategoryTranslation() { Id = 3, CategoryId = 2, Name = "Sản phẩm 2", LanguageId = "vi-VN", SeoAlias = "San-pham-2", SeoDescription = "Sản phẩm 2", SeoTitle = "Sản phẩm 2" },
-                  new CategoryTranslation() { Id = 4, CategoryId = 2, Name = "Product Name 2", LanguageId = "en-US", SeoAlias = "Product-Name-2", SeoDescription = "The Product Name 2", SeoTitle = "The Product Name 2" }
+                  new CategoryTranslation() { Id = 1, CategoryId = 1, Name = "Sản phẩm 1", LanguageId = "vi", SeoAlias = "San-pham-1", SeoDescription = "Sản phẩm 1", SeoTitle = "Sản phẩm 1" },
+                  new CategoryTranslation() { Id = 2, CategoryId = 1, Name = "Product Name 1", LanguageId = "en", SeoAlias = "Product-name-1", SeoDescription = "The products name 1", SeoTitle = "The products name 1" },
+                  new CategoryTranslation() { Id = 3, CategoryId = 2, Name = "Sản phẩm 2", LanguageId = "vi", SeoAlias = "San-pham-2", SeoDescription = "Sản phẩm 2", SeoTitle = "Sản phẩm 2" },
+                  new CategoryTranslation() { Id = 4, CategoryId = 2, Name = "Product Name 2", LanguageId = "en", SeoAlias = "Product-Name-2", SeoDescription = "The Product Name 2", SeoTitle = "The Product Name 2" }
                     );
 
             modelBuilder.Entity<Product>().HasData(
@@ -63,7 +63,7 @@ namespace eShopSolution.Data.Extensions
                      Id = 1,
                      ProductId = 1,
                      Name = "Sản phẩm 1",
-                     LanguageId = "vi-VN",
+                     LanguageId = "vi",
                      SeoAlias = "San-pham-1",
                      SeoDescription = "Sản phẩm 1",
                      SeoTitle = "Sản phẩm 1",
@@ -75,7 +75,7 @@ namespace eShopSolution.Data.Extensions
                         Id = 2,
                         ProductId = 1,
                         Name = "Product Name 1",
-                        LanguageId = "en-US",
+                        LanguageId = "en",
                         SeoAlias = "Product-name-1",
                         SeoDescription = "Product Name 1",
                         SeoTitle = "Product Name 1",

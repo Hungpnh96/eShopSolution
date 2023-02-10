@@ -3,189 +3,198 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Đăng nhập</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-    <meta charset="utf-8" />
-    <meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
-    <meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Metronic - Bootstrap 5 HTML, VueJS, React, Angular &amp; Laravel Admin Dashboard Theme" />
-    <meta property="og:url" content="https://keenthemes.com/metronic" />
-    <meta property="og:site_name" content="Keenthemes | Metronic" />
-    <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="../../../assets/media/logos/favicon.ico" />
-    <link href="../../../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="../../../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+    <script src="https://kit.fontawesome.com/64d58efce2.js"
+            crossorigin="anonymous"></script>
+    <link href="../../../assets/css/Login.css" rel="stylesheet" type="text/css" />
+    <title>Đăng nhập & Đăng ký</title>
+
+    <script src="../../../assets/js/Common.js"></script>
+
+    <!-- using kendo -->
+    <link rel="stylesheet" href="../../../assets/css/kendo.style/kendo.common.min.css" />
+    <link rel="stylesheet" href="../../../assets/css/kendo.style/kendo.default.min.css" />
+    <script src="../../../assets/js/jquery.min.js"></script>
+    <script src="../../../assets/js/kendo.all.min.js"></script>
+    <script src="../../../assets/js/MessageBox.js"></script> @*guides: https://sweetalert.js.org/guides/*@
+
+    @*custom css datetimepicker*@
     <style>
-        .field-icon {
-            float: right;
-            margin-left: -25px;
-            margin-top: -25px;
-            position: relative;
-            z-index: 2;
+        span.k-picker-wrap.k-state-default {
+            border: none;
+            border-radius: 0 25px 25px 0;
+            height: 100% !important;
+            width: 100% !important;
+            background: #f0f0f0;
         }
 
-        .container {
-            padding-top: 50px;
-            margin: auto;
+        span.k-icon.k-i-calendar {
+            background-color: #0ff;
+        }
+
+        input#txtDate_Dob {
+            background-color: #f0f0f0;
+        }
+        /*Loading*/
+       /* #loading {
+          background-color:white;
+          position: fixed;
+          display: block;
+          top: 0;
+          bottom: 0;
+          z-index: 1000000;
+          opacity: 0.5;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+        }
+
+        #loading img {
+          margin: auto;
+          display: block;
+          top: calc(50% - 100px);
+          left: calc(50% - 10px);
+          position: absolute;
+          z-index: 999999;
+        }
+*/
+        .form-img {
+            display: none;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: 50% 50% no-repeat rgba(79, 77, 77, 0.52);
+            position: fixed;
+            top: 0px;
+            left: 0px;
+        }
+
+        .img-waiting {
+            width: 10%;
+            margin-top: 15%;
         }
     </style>
 </head>
-<!--end::Head-->
-<!--begin::Body-->
 <body>
-    <!--begin::Main-->
-    <!--begin::Root-->
-    <div class="d-flex flex-column flex-root">
-        <!--begin::Authentication - Sign-in -->
-        <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed">
-            <!--begin::Content-->
-            <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-                <!--begin::Logo-->
-                <a href="../../../index.html" class="mb-12">
-                    <img alt="Logo" src="../../../assets/media/logos/logo-1.svg" class="h-40px" />
-                </a>
-                <!--end::Logo-->
-                <!--begin::Wrapper-->
-                <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-
-                    <!--begin::Form-->
-                    <form class="form w-100" novalidate="novalidate" asp-controller="Login" asp-action="Index">
-                        <!--begin::Heading-->
-                        <div class="text-center mb-10">
-                            <!--begin::Title-->
-                            <h1 class="text-dark mb-3">Sign In</h1>
-                            <!--end::Title-->
-                            <!--begin::Link-->
-                            <div class="text-gray-400 fw-bold fs-4">
-                                New Here?
-                                <a asp-action="Register" asp-controller="User" class="link-primary fw-bolder">Create an Account</a>
-                            </div>
-                            <!--end::Link-->
+    
+    <div class="container" id="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form asp-controller="Login" asp-action="Index" class="sign-in-form">
+                    <h2 class="title">Đăng nhập</h2>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" asp-for="UserName" placeholder="Tài khoản" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" asp-for="Password" placeholder="Mật khẩu" />
+                    </div>
+                    <input type="submit" value="Đăng nhập" class="btn solid" />
+                    <p class="social-text">Hoặc đăng nhập với</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+                <form class="sign-up-form">
+                    <h2 class="title">Đăng ký</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="txt_FullName" placeholder="Họ và tên" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input type="text" id="txt_PhoneNumber" placeholder="Số điện thoại" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-birthday-cake"></i>
+                        <div>
+                            <input type="text" style="height:99%" id="txtDate_Dob" />
                         </div>
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        <!--begin::Heading-->
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-10">
-                            <!--begin::Label-->
-                            <label class="form-label fs-6 fw-bolder text-dark">UserName</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <input class="form-control form-control-lg form-control-solid" type="text" asp-for="UserName" name="userName" autocomplete="off" placeholder="UserName" />
-                            <!--end::Input-->
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="fv-row mb-10">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-stack mb-2">
-                                <!--begin::Label-->
-                                <label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
-                                <!--end::Label-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Input-->
-                            <input class="form-control form-control-lg form-control-solid" id="password" type="password" asp-for="Password" name="password" autocomplete="off" placeholder="Password" />
-                            <i class="fa fa-fw fa-eye field-icon" id="togglePassword"></i>
-                            <!--end::Input-->
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <!--<div class="fv-row mb-10">-->
-                        <!--begin::Wrapper-->
-                        <!--<div class="d-flex flex-stack mb-2">-->
-                        <!--begin::Label-->
-                        <!--<label class="form-label fw-bolder text-dark fs-6 mb-0">Remember me?</label>
-    <input type="checkbox" asp-for="RememberMe" name="password" />-->
-                        <!--end::Label-->
-                        <!--</div>-->
-                        <!--begin::Link-->
-                        <!--<a href="#" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>-->
-                        <!--end::Link-->
-                        <!--end::Wrapper-->
-                        <!--</div>-->
-                        <!--end::Input group-->
-                        <!--begin::Actions-->
-                        <div class="text-center">
-                            <!--begin::Submit button-->
-                            <button type="submit" class="btn btn-lg btn-primary w-100 mb-5">
-                                <span class="indicator-label">Continue</span>
-                                <span class="indicator-progress">
-                                    Please wait...
-                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                </span>
-                            </button>
-                            <!--end::Submit button-->
-                            <!--begin::Separator-->
-                            <div class="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
-                            <!--end::Separator-->
-                            <!--begin::Google link-->
-                            <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-                                <img alt="Logo" src="../../../assets/media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />Continue with Google
-                            </a>
-                            <!--end::Google link-->
-                            <!--begin::Google link-->
-                            <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-                                <img alt="Logo" src="../../../assets/media/svg/brand-logos/facebook-4.svg" class="h-20px me-3" />Continue with Facebook
-                            </a>
-                            <!--end::Google link-->
-                        </div>
-                        <!--end::Actions-->
-                    </form>
-                    <!--end::Form-->
-                </div>
-                <!--end::Wrapper-->
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="txt_Email" placeholder="Email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="txt_UserName" placeholder="Tài khoản" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="txt_Password" placeholder="Mật khẩu" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="txt_ComfirmPassword" placeholder="Xác nhận mật khẩu" />
+                    </div>
+                    <input type="button" id="Register" class="btn" value="Đăng ký" />
+                    <p class="social-text">Hoặc đăng ký với </p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
             </div>
-            <!--end::Content-->
         </div>
-        <!--end::Authentication - Sign-in-->
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Bạn chưa có tài khoản ?</h3>
+                    <p></p>
+                    <button class="btn transparent" id="sign-up-btn">
+                        Đăng ký
+                    </button>
+                </div>
+                <img src="../../../assets/img/log.svg" class="image" alt="" />
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Bạn đã có tài khoản ?</h3>
+                    <p></p>
+                    <button class="btn transparent" id="sign-in-btn">
+                        Đăng nhập
+                    </button>
+                </div>
+                <img src="../../../assets/img/register.svg" class="image" alt="" />
+            </div>
+        </div>
     </div>
-
-    <script>
-        const togglePassword = document
-            .querySelector('#togglePassword');
-
-        const password = document.querySelector('#password');
-
-        togglePassword.addEventListener('click', () => {
-
-            // Toggle the type attribute using
-            // getAttribure() method
-            const type = password
-                .getAttribute('type') === 'password' ?
-                'text' : 'password';
-
-            password.setAttribute('type', type);
-
-            // Toggle the eye and bi-eye icon
-            //this.classList.toggle('fa-eye fa-eye-slash');
-        });
-
-    </script>
-    <!--end::Root-->
-    <!--end::Main-->
-    <!--begin::Javascript-->
-    <script>var hostUrl = "../../../assets/index.html";</script>
-    <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script src="../../../assets/plugins/global/plugins.bundle.js"></script>
-    <script src="../../../assets/js/scripts.bundle.js"></script>
-    <!--end::Global Javascript Bundle-->
-    <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="../../../assets/js/custom/authentication/sign-in/general.js"></script>
-    <!--end::Page Custom Javascript-->
-    <!--end::Javascript-->
-
+    <div class="form-img" id="loading" style="display: none;"><img src="../../../assets/img/WaitingLoad.gif" class="img-waiting" /></div>
+    @* <div id="loading" style="display:none">
+        <img src="../../../assets/img/WaitingLoad.gif" alt="Loading..."/>
+    </div>*@
+    <script src="../../../assets/js/Login.js"></script>
 </body>
-<!--end::Body-->
-<!-- Mirrored from preview.keenthemes.com/metronic8/demo1/authentication/layouts/basic/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Dec 2021 05:00:13 GMT -->
 </html>

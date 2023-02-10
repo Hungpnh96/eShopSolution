@@ -20,7 +20,7 @@ namespace eShopSolution.ViewModels.System.Users
         [Display(Name = "Ngày sinh")]
         [DataType(DataType.Date)]
         public DateTime Dob { get; set; }
-
-        public IList<string> Roles { get; set; }
+        [Display(Name = "Quyền")]
+        public string Roles { get; set; }
     }
 }

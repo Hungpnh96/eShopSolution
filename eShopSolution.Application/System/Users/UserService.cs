@@ -70,6 +70,7 @@ namespace eShopSolution.Application.System.Users
                 return new ApiErrorResult<UserVm>("User không tồn tại");
             }
             var roles = await _userManager.GetRolesAsync(user);
+
             var userVm = new UserVm()
             {
                 Email = user.Email,
@@ -78,14 +79,17 @@ namespace eShopSolution.Application.System.Users
                 Dob = user.Dob,
                 Id = user.Id,
                 UserName = user.UserName,
-                Roles = roles
+                Roles = string.Join(',' , roles.ToArray()),
             };
             return new ApiSuccessResult<UserVm>(userVm);
         }
 
         public async Task<ApiResult<PagedResult<UserVm>>> GetUsersPaging(GetUserPaggingRequest request)
         {
+            //1. Lấy table User
             var query = _userManager.Users;
+            
+            //2. Lọc danh sách user theo điều kiện nếu có 
             if (!string.IsNullOrEmpty(request.KeyWord))
             {
                 query = query.Where(x => x.UserName.Contains(request.KeyWord)
@@ -105,6 +109,15 @@ namespace eShopSolution.Application.System.Users
                     FullName = x.FullName,
                     Id = x.Id,
                 }).ToListAsync();
+
+            //Lấy danh sách quyền của user
+            for(int i = 0; i < data.Count(); i++)
+            {
+                var user = await _userManager.FindByIdAsync(data[i].Id.ToString());
+                var roles = await _userManager.GetRolesAsync(user);
+                data[i].Roles = string.Join(',', roles.ToArray());
+            }
+
 
             //4. Select and projection
             var pagedResult = new PagedResult<UserVm>()
@@ -142,7 +155,7 @@ namespace eShopSolution.Application.System.Users
             {
                 return new ApiSuccessResult<bool>();
             }
-            return new ApiErrorResult<bool>("Đăng ký không thành công");
+            return new ApiErrorResult<bool>(result.ToString());
         }
 
         public async Task<ApiResult<bool>> Update(Guid id, UserUpdateRequest request)

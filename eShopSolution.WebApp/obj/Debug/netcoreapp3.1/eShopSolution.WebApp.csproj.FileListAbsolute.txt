@@ -169,7 +169,6 @@ D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.Ta
 D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.TagHelpers.output.cache
 D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.RazorCoreGenerate.cache
 D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -182,3 +181,15 @@ D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.dl
 D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.pdb
 D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.genruntimeconfig.cache
 D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.csproj.CopyComplete
+D:\Solution\eShopSolution.WebApp\bin\Debug\netcoreapp3.1\en\eShopSolution.WebApp.resources.dll
+D:\Solution\eShopSolution.WebApp\bin\Debug\netcoreapp3.1\vi\eShopSolution.WebApp.resources.dll
+D:\Solution\eShopSolution.WebApp\bin\Debug\netcoreapp3.1\LazZiya.ExpressLocalization.dll
+D:\Solution\eShopSolution.WebApp\bin\Debug\netcoreapp3.1\LazZiya.TagHelpers.dll
+D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.LocalizationResources.ExpressLocalizationResource.en.resources
+D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.LocalizationResources.ExpressLocalizationResource.vi.resources
+D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.LocalizationResources.ViewLocalizationResource.en.resources
+D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.LocalizationResources.ViewLocalizationResource.vi.resources
+D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.csproj.GenerateResource.cache
+D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\eShopSolution.WebApp.MvcApplicationPartsAssemblyInfo.cs
+D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\en\eShopSolution.WebApp.resources.dll
+D:\Solution\eShopSolution.WebApp\obj\Debug\netcoreapp3.1\vi\eShopSolution.WebApp.resources.dll

@@ -102,19 +102,24 @@ namespace eShopSolution.Application.Catalog.Products
             //1. Select join
             var query = from p in _context.Products
                         join pt in _context.ProductTranslations on p.Id equals pt.ProductId
-                        join pic in _context.ProductInCategories on p.Id equals pic.ProductId into ppic from pic in ppic.DefaultIfEmpty()
-                        join c in _context.Categories on pic.CategoryId equals c.Id into picc from c in picc.DefaultIfEmpty()
-                        where pt.LanguageId == request.LanguageId
-                        select new { p, pt, pic };
+                        //join pic in _context.ProductInCategories on pt.ProductId equals pic.ProductId into ppic
+                        //from pic in ppic.DefaultIfEmpty()
+                        //join c in _context.Categories on pic.CategoryId equals c.Id into picc
+                        //from c in picc.DefaultIfEmpty()
+                        //join pi in _context.ProductImages on pt.ProductId equals pi.ProductId into pii
+                        //from pi in pii.DefaultIfEmpty()
+                        where pt.LanguageId == request.LanguageId //&& pi.IsDefault == true
+                        select new { p, pt };
 
             //2. filter
             if (!string.IsNullOrEmpty(request.Keyword))
                 query = query.Where(x => x.pt.Name.Contains(request.Keyword));
 
-            if (request.CategoryId != null && request.CategoryId != 0)
-            {
-                query = query.Where(p => p.pic.CategoryId == request.CategoryId);
-            }
+            //if (request.CategoryId != null && request.CategoryId != 0)
+            //{
+            //    query = query.Where(p => p.pic.CategoryId == request.CategoryId);
+            //}
+
             //3. Paging
             int totalRow = await query.CountAsync();
 
@@ -137,7 +142,36 @@ namespace eShopSolution.Application.Catalog.Products
                     ViewCount = x.p.ViewCount
                 }).ToListAsync();
 
-            //4. Select and projection
+
+            //4. Lấy danh sách loại sản phẩm
+            for (int i = 0; i < data.Count(); i++)
+            {
+                //Lấy danh sách sản phẩm
+                var product = await _context.ProductTranslations.SingleOrDefaultAsync(x=>x.ProductId == data[i].Id && x.LanguageId == request.LanguageId);
+                
+                //Lấy loại sản phẩm
+                var productInCategory = await _context.ProductInCategories.Where(x => x.ProductId == int.Parse(product.ProductId.ToString())).ToListAsync();
+
+                foreach (var item in productInCategory)
+                {
+                    var category = await _context.CategoryTranslations.SingleOrDefaultAsync(x => x.CategoryId == int.Parse(item.CategoryId.ToString()) && x.LanguageId == request.LanguageId);
+                    //Nếu có loại sản phẩm thì nối chuỗi
+                    if (category.Name != null || category.Name != "")
+                        data[i].Categories += category.Name;// string.Join(',', category.Name);
+                    else
+                        data[i].Categories = "";
+                }
+
+                //Lấy file hình mặc định
+                var productImg = await _context.ProductImages.SingleOrDefaultAsync(x => x.ProductId == data[i].Id && x.IsDefault == true);
+                if (productImg != null)
+                    data[i].ImageDefault = productImg.ImagePath;
+                else
+                    data[i].ImageDefault = "";
+            }
+
+
+            //5. Select and projection
             var pagedResult = new PagedResult<ProductVm>()
             {
                 TotalRecords = totalRow,
@@ -176,7 +210,7 @@ namespace eShopSolution.Application.Catalog.Products
                 SeoTitle = productTranslation != null ? productTranslation.SeoTitle : null,
                 Stock = product.Stock,
                 ViewCount = product.ViewCount,
-                Categories = categoríe
+                Categories = categoríe.ToString()
             };
             return productViewModel;
         }
@@ -371,8 +405,8 @@ namespace eShopSolution.Application.Catalog.Products
 
         public async Task<ApiResult<bool>> CategoryAssign(int Id, CategoryAssignRequest request)
         {
-            var user = await _context.Products.FindAsync(Id);
-            if (user == null)
+            var product = await _context.Products.FindAsync(Id);
+            if (product == null)
             {
                 return new ApiErrorResult<bool>("Sản phẩm không đã tồn tại");
             }
@@ -391,7 +425,6 @@ namespace eShopSolution.Application.Catalog.Products
                         ProductId = Id
                     });
                 }
-                    
             }
             
             await _context.SaveChangesAsync();
