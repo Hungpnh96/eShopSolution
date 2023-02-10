@@ -56,8 +56,15 @@ namespace eShopSolution.AdminApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var languageId = HttpContext.Session.GetString(SystemConstants.AppSetting.DefaultLanguageId);
+            var categories = await _categoryApiClient.GetAll(languageId);
+            ViewBag.SelectedCategories = categories.Select(x => new SelectListItem()
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            });
             return View();
         }
 

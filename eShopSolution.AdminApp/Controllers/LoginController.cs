@@ -91,5 +91,64 @@ namespace eShopSolution.AdminApp.Controllers
 
             return principal;
         }
+
+        [HttpPost]
+        public async Task<JsonResult> Register(RegisterRequest request)
+        {
+            string Message = "";
+
+            ResponseData response;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = await _userApiClient.RegisterUser(request);
+                    if (result.IsSuccessed)
+                    {
+                        Message = "Đăng kí tài khoản: " + request.UserName + " thành công!";
+                        response = new ResponseData(false, null, Message);
+                    }
+                    else
+                    {
+                        response = new ResponseData(true, null, result.Message);
+                    }
+                   
+                }
+                else
+                {
+                    //Lấy lỗi từ validation
+                    Message = string.Join("; ", ModelState.Values
+                                       .SelectMany(x => x.Errors)
+                                       .Select(x => x.ErrorMessage == "" ? x.Exception.Message : x.ErrorMessage));
+                    response = new ResponseData(true, null, Message);
+                }
+                
+                
+            }
+            catch(Exception ex)
+            {
+                response = new ResponseData(true, null, ex.Message.ToString());
+            }
+            return Json(response);
+
+        }
+
+
+        public class ResponseData
+        {
+            public bool IsError { get; set; }
+            public object Result { get; set; }
+            public string Message { get; set; }
+            public ResponseData()
+            {
+
+            }
+            public ResponseData(bool isError, object result, string message)
+            {
+                IsError = isError;
+                Result = result;
+                Message = message;
+            }
+        }
     }
 }

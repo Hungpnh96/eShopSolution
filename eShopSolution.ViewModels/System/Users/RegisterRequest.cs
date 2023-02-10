@@ -1,28 +1,20 @@
-﻿using System;
+﻿using eShopSolution.ViewModels.FluentValidations.Users;
+using ServiceStack.FluentValidation.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace eShopSolution.ViewModels.System.Users
 {
+    [Validator(typeof(RegisterRequestFlunetValidation))]
     public class RegisterRequest
     {
-        [Display(Name = "Họ và Tên")]
         public string FullName { get; set; }
-        [Display(Name = "Ngày sinh")]
-        [DataType(DataType.Date)]
         public DateTime Dob { get; set; }
-        [Display(Name = "Email")]
         public string Email { get; set; }
-        [Display(Name = "Số điện thoại")]
         public string PhoneNumber { get; set; }
-        [Display(Name = "Tên tài khoản")]
         public string UserName { get; set; }
-        [Display(Name = "Mật khẩu")]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
-        [Display(Name = "Xác nhận mật khẩu")]
-        [DataType(DataType.Password)]
         public string ComfirmPassword { get; set; }
     }
 }

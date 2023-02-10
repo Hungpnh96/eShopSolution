@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ArKDsR/+22nQHO/1IhVbWSXtG9aXe2NBtDPEKoWCs+DOqKg8eJ4zapUDG6A8jztFn541GvMNznU0dhD8y+A1uQ==",
+  "dgSpecHash": "9N/dnFWsCTCn2y1RNl9w2LwGc5DU9pyaf0nGbJogzsOVkU45yCh3L935MFGo1JseAUU8zlRobVZNH86uN7PJ5A==",
   "success": true,
   "projectFilePath": "D:\\Solution\\eShopSolution.WebApp\\eShopSolution.WebApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\HungPNH\\.nuget\\packages\\lazziya.expresslocalization\\4.0.4\\lazziya.expresslocalization.4.0.4.nupkg.sha512",
+    "C:\\Users\\HungPNH\\.nuget\\packages\\lazziya.taghelpers\\6.0.2\\lazziya.taghelpers.6.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

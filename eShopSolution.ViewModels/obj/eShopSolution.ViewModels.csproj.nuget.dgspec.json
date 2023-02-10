@@ -47,6 +47,10 @@
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "ServiceStack": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             }
           },
           "imports": [

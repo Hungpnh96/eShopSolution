@@ -12,34 +12,48 @@ namespace eShopSolution.ViewModels.FluentValidations.Users
         {
             RuleFor(x => x.UserName)
                 .NotEmpty()
-                .WithMessage("UserName không được trống!");
+                .WithMessage("Tài khoản không được trống!");
 
             RuleFor(x => x.Password)
                 .NotEmpty()
-                .WithMessage("Password không được trống!");
+                .WithMessage("Mật khẩu không được trống!")
+                .MinimumLength(8)
+                .WithMessage("Mật khẩu phải ít nhất 8 kí tự!")
+                .Matches("[A-Z]").WithMessage("Mật khẩu phải có chữ hoa!")
+                .Matches("[a-z]").WithMessage("Mật khẩu phải có chữ thường!")
+                .Matches(@"\d").WithMessage("Mật khẩu phải có chữ số!")
+                .Matches(@"[][""!@$%^&*(){}:;<>,.?/+_=|'~\\-]").WithMessage("Mật khẩu phải có kí tự đặc biệt!")
+                .Matches("^[^£# “”]*$").WithMessage("Mật khẩu không được chứa kí tự £ # “” hoặc khoảng trắng!");
 
             RuleFor(x => x.ComfirmPassword)
                 .NotEmpty()
-                .WithMessage("ComfirmPassword không được trống!");
+                .WithMessage("Xác nhận mật khẩu không được trống!")
+                .MinimumLength(8)
+                .WithMessage("Xác nhận mật khẩu phải ít nhất 8 kí tự!")
+                .Matches("[A-Z]").WithMessage("Xác nhận mật khẩu phải có chữ hoa!")
+                .Matches("[a-z]").WithMessage("Xác nhận mật khẩu phải có chữ thường!")
+                .Matches(@"\d").WithMessage("Xác nhận mật khẩu phải có chữ số!")
+                .Matches(@"[][""!@$%^&*(){}:;<>,.?/+_=|'~\\-]").WithMessage("Xác nhận mật khẩu phải có kí tự đặc biệt!")
+                .Matches("^[^£# “”]*$").WithMessage("Xác nhận mật khẩu không được chứa kí tự £ # “” hoặc khoảng trắng!");
 
             RuleFor(x => x).Custom((request, context) =>
             {
                 if(request.Password != request.ComfirmPassword)
                 {
-                    context.AddFailure("ComfirmPassword phải giống Password!");
+                    context.AddFailure("Xác thực mật khẩu không khớp!");
                 }
             });
 
             RuleFor(x => x.FullName)
                 .NotEmpty()
-                .WithMessage("FullName không được trống!");
+                .WithMessage("Họ và tên không được trống!");
 
 
             RuleFor(x => x.Email)
                 .NotEmpty()
-                .WithMessage("Email không được trống!")
+                .WithMessage("Địa chỉ email không được trống!")
                 .Matches(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$")
-                .WithMessage("Email không đúng định dạng");
+                .WithMessage("Địa chỉ email không đúng định dạng!");
 
             RuleFor(x => x.Dob)
                 .NotEmpty()

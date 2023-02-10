@@ -22,6 +22,7 @@ namespace eShopSolution.ViewModels.Catalog.Products
 
         public string SeoAlias { get; set; }
         public string LanguageId { set; get; }
-        public List<string> Categories { get; set; } = new List<string>();
+        public string ImageDefault { set; get; }
+        public string Categories { get; set; }
     }
 }

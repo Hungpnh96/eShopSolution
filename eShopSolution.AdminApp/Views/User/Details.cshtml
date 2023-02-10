@@ -77,7 +77,7 @@
                 </div>
                 <!--end::Card title-->
                 <!--begin::Action-->
-                <a asp-action="Edit" asp-controller="User"class="btn btn-primary align-self-center">Edit Profile</a>
+                <a asp-action="Edit" asp-controller="User"class="btn btn-primary align-self-center" asp-route-id="@Model.Id">Edit Profile</a>
                 <!--end::Action-->
             </div>
             <!--begin::Card header-->
@@ -139,6 +139,16 @@
                     <!--begin::Col-->
                     <div class="col-lg-8">
                         <span class="fw-bolder fs-6 text-gray-800">@Html.DisplayFor(model => model.PhoneNumber)</span>
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <div class="row mb-7">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 fw-bold text-muted">@Html.DisplayNameFor(model => model.Roles)</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8">
+                        <span class="fw-bolder fs-6 text-gray-800">@Html.DisplayFor(model => model.Roles)</span>
                     </div>
                     <!--end::Col-->
                 </div>
